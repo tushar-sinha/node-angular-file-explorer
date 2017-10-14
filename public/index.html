@@ -1,0 +1,36 @@
+<html ng-app="fileExp" lang='en'>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+  <title>Node/Angular File explorer App</title>
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+  <script src="javascripts/controller.js"></script>
+
+</head>
+<body ng-controller="mainController">
+  <div class="container">
+
+
+    <div class="jumbotron text-center">
+      <h1>I'm a File Explorer <span class="label label-info">{{ files.length - 1}}</span></h1>
+    </div>
+
+    <div class="page-header">
+      <button type="button" class="btn btn-primary" ng-click="rootCall()">Root</button>
+      <h1 ng-repeat="file in files">{{file.root}}</h1>
+    </div>
+    <div id="box">
+      <ul>
+        <li ng-click="open(file)" ng-repeat="file in files | filter: {isRoot:false}">
+          {{file.Name}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
